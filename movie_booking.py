@@ -59,7 +59,7 @@ class BookingManager:
         if len(user_bookings) == 0 :
             print("예매 내역이 없습니다.")
         else:
-            print(f"======== {self.name} 님의 예매 현황 =========")
+            print(f"============= {self.name} 님의 예매 현황 ==============")
             for i, booking in enumerate(user_bookings, 1):
                 print(f"{i} {booking['제목']} {booking['상영관']}({booking['좌석번호']}번)")
     
@@ -78,17 +78,23 @@ class BookingManager:
             self.show_bookings(self.get_user_bookings())
     
     def save(self) -> None:
+        """ 전체 예매 내역을 파일에 저장한다."""
         with open(self.FILESNAME, "w", encoding="utf-8") as f:
             json.dump(self.bookings, f, ensure_ascii=False, indent=2)
                 
 def show_menu() -> None:
-    print("\n========= 영화 예매 ===========")
+    """ 영화 예매 main 메뉴를 출력한다. """
+    print("\n================ 영화 예매 ==================")
     print("1. 영화 예매  2. 예매 현황  3. 예매 취소  q. 종료")
                     
 def main() -> None:
+    # movies.json에서 영화 목록 정보를 불러온다.
     movies = load_movies()
+
+    # 로그인 사용자 정보를 입력 받는다.
     name = input("로그인 사용자 이름을 입력하세요 : ").strip()
-    
+
+    # 메뉴 선택에 따른 영화 예매/취소/조회 처리 
     manager = BookingManager(name, movies)
     while True:
         show_menu()
@@ -106,7 +112,6 @@ def main() -> None:
             manager.cancel(user_bookings)
         else:
             print("잘못된 선택입니다.") 
-
 
 if __name__ == "__main__":  
     main()

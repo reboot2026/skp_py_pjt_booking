@@ -10,6 +10,7 @@ class Movie:
         self.cols = cols
        
     def show_screen(self, booked:int) -> None:
+        """ 영화 상영관의 좌석번호 목록을 출력한다. (이미 예약된 좌석은 'X'로 출력) """
         print(f"=============== {self.screen} ===============")
         seat_count = self.cols * self.rows
         for i in range(seat_count) :
@@ -26,6 +27,7 @@ class Movie:
     
 
 def load_movies() -> list[Movie]:
+    """ 파일에 저장된 영화 목록을 불러와 list[Movie]로 반환한다. """
     movies = []
     with open("movies.json", encoding="utf-8") as f:
         for i, m in enumerate(json.load(f), 1):
