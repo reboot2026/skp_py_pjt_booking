@@ -43,8 +43,11 @@ class BookingManager:
         movie.show_screen(booked) 
 
         # 좌석 선택 / 예매 처리
-        seat_no = get_int_range("예매할 좌석 번호를 입력하세요 : ", 1, movie.rows * movie.cols)
-        if seat_no in booked:
+        loop_quit_condition = 0
+        seat_no = get_int_range_with_condition("예매할 좌석 번호를 입력하세요(0: 취소) : ", 1, movie.rows * movie.cols, condition=loop_quit_condition)
+        if seat_no == loop_quit_condition:
+            return
+        elif seat_no in booked:
             print("이미 예매된 좌석입니다.")
         else:
             self.bookings.append({"이름":self.name, "영화ID":movie.id, "제목":movie.title, "상영관":movie.screen, "좌석번호":seat_no, "예매일자":str(date.today())})
