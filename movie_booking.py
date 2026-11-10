@@ -84,15 +84,15 @@ class BookingManager:
                 
 def show_menu() -> None:
     """ 영화 예매 main 메뉴를 출력한다. """
-    print("\n================ 영화 예매 ==================")
-    print("1. 영화 예매  2. 예매 현황  3. 예매 취소  q. 종료")
+    print("\n================== 영화 예매 ====================")
+    print(   "1. 영화 예매  2. 예매 현황  3. 예매 취소  q. 종료")
                     
 def main() -> None:
     # movies.json에서 영화 목록 정보를 불러온다.
     movies = load_movies()
 
     # 로그인 사용자 정보를 입력 받는다.
-    name = input("로그인 사용자 이름을 입력하세요 : ").strip()
+    name = input("\n로그인 사용자 이름을 입력하세요 : ").strip()
 
     # 메뉴 선택에 따른 영화 예매/취소/조회 처리 
     manager = BookingManager(name, movies)
