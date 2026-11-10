@@ -30,9 +30,3 @@ if __name__ == "__main__":
     score = get_int_range("점수(0~100): ", 0, 100)
     print(f"나이 {age}, 점수 {score}")
 
-
-if __name__ == "__main__":
-    age = get_int("나이: ")
-    score = get_int_range("점수(0~100): ", 0, 100)
-    print(f"나이 {age}, 점수 {score}")
-
